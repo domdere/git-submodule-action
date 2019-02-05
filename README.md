@@ -18,4 +18,6 @@ action "bump-submodules" {
 }
 ```
 
+## TODOs
 
+- [ ] Handle submodules referring to private repos (ssh?)
