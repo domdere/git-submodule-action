@@ -36,6 +36,7 @@ git fetch origin ${REF}
 git submodule init
 git submodule update
 git submodule foreach 'git fetch --all -p'
+git submodule foreach 'git merge origin/master'
 git add -v .
 git commit -m "bumping submodules"
 git push origin ${REF}
