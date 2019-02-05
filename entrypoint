@@ -6,7 +6,7 @@ CONFIG_ERROR=78
   && jq -r ".issue.pull_request.url" "${GITHUB_EVENT_PATH}" \
   ) || exit ${CONFIG_ERROR}
 
-if [ "$(jq -r ".action" "${GITHUB_EVENT_PATH}")" -ne "created" ]; then
+if [ "$(jq -r ".action" "${GITHUB_EVENT_PATH}")" != "created" ]; then
   echo "not a new comment"
   exit ${CONFIG_ERROR}
 fi
@@ -22,7 +22,7 @@ API_HEADER="Accept: application/vnd.github.v3+json"
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
 
 PR_INFO=$(curl -X GET -s -H "${AUTH_HEADER}" -H "${API_HEADER}" \
-  "${BASE_URI}/repos/${REPO}/pulls/${PR_NUMBER}")
+  "${BASE_URI}/repos/${REPO}/pulls/${PR}")
 
 REF=$(echo "${PR_INFO}" | jq -r .head.ref)
 
