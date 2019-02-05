@@ -7,5 +7,5 @@ LABEL "com.github.actions.description"="Bump git submodules on '/submodules' com
 LABEL "com.github.actions.icon"="git-pull-request"
 LABEL "com.github.actions.color"="blue"
 
-ADD entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ADD entrypoint /entrypoint
+ENTRYPOINT ["/entrypoint"]
