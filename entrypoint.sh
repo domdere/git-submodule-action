@@ -1,4 +1,4 @@
-!/bin/sh -eux
+#!/bin/sh -eux
 
 CONFIG_ERROR=78
 
