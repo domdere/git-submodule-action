@@ -31,7 +31,8 @@ git config --global user.name "GitHub Submodules Action"
 
 git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git
 
-git fetch origin ${REF}
+git fetch --all -p
+git checkout "${REF}"
 
 git submodule init
 git submodule update
@@ -39,4 +40,4 @@ git submodule foreach 'git fetch --all -p'
 git submodule foreach 'git merge origin/master'
 git add -v .
 git commit -m "bumping submodules"
-git push origin ${REF}
+git push origin "${REF}"
