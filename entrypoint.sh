@@ -2,8 +2,8 @@
 
 CONFIG_ERROR=78
 
-(jq -r ".comment.body" "${GITHUB_EVENT_PATH}" | grep -E "/submodules" \
-  jq -r ".issue.pull_request.url" "${GITHUB_EVENT_PATH}" \
+((jq -r ".comment.body" "${GITHUB_EVENT_PATH}" | grep -E "/submodules") \
+  && jq -r ".issue.pull_request.url" "${GITHUB_EVENT_PATH}" \
   ) || exit ${CONFIG_ERROR}
 
 if [ "$(jq -r ".action" "${GITHUB_EVENT_PATH}")" -ne "created" ]; then
